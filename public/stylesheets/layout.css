@@ -1,0 +1,21 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.header>.title {
+    font-size: 2em;
+    font-weight: bolder;
+}
+
+.nav-bar>* {
+    display: flex;
+    gap: 10px;
+}
+
+a {
+    color: #00B7FF;
+  }
+  

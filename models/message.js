@@ -1,32 +1,39 @@
 var mongoose = require('mongoose');
+const { DateTime } = require('luxon');
 
 var Schema = mongoose.Schema;
 
 var MessageSchema = new Schema({
 
-    User: { 
-                Type: Schema.Types.ObjectId, 
-                ref='User',
-                required=true,
+    user: { 
+                type: Schema.Types.ObjectId, 
+                ref: 'User',
+                required: true,
           },
     
     title: {
-                Type: String,
-                minlength=1,
-                maxlength=35,
-                required=true,
+                type: String,
+                minLength: 1,
+                maxLength: 35,
+                required: true,
            },
     text: {
-                Type: String,
-                maxlength=5000,
-                required=true,
+                type: String,
+                maxLength: 5000,
+                required: true,
           },
     
     timestamp: {
-                    Type: Date,
+                    type: Date,
                     default: Date.now(),
-                    required=true,
+                    required: true,
                }
+})
+
+MessageSchema
+.virtual('date')
+.get(function(){
+      return DateTime.fromJSDate(this.timestamp).toFormat('yyyy-mm-dd @ hh:mm');
 })
 
 module.exports = mongoose.model("Message", MessageSchema);

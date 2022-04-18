@@ -1,0 +1,25 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/layout.css')
+    link(rel='stylesheet', href='/stylesheets/normalize.css')
+  body
+    .content 
+      .header 
+        .title #{title}
+        .nav-bar 
+          if (!user)
+            ul 
+              a(href='/log-in') Login
+              a(href='/sign-up') Sign Up 
+          else 
+            a(href="/create-message") 
+              li Create Message
+            a(href="/member") 
+              li Member
+            a(href="/admin")  
+              li Admin
+            a(href="/log-out") 
+              li Log out 
+      block content

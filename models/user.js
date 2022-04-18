@@ -6,29 +6,29 @@ var UserSchema = new Schema({
 
     first_name: {
                     type: String,
-                    required=true,
-                    minlength=1,
-                    maxlength=20,
+                    required: true,
+                    minLength: 1,
+                    maxLength: 20,
                 },
 
     last_name: {
                     type: String,
-                    required=true,
-                    minlength=1,
-                    maxlength=20,
+                    required: true,
+                    minLength: 1,
+                    maxLength: 20,
                },
 
     username: {
                     type: String, 
-                    required=true,
-                    minlength=4,
-                    maxlength=20,
+                    required: true,
+                    minLength: 4,
+                    maxLength: 20,
               },
     
     password: {
                     type: String,
-                    minlength=8,
-                    maxlength=20,
+                    minLength: 8,
+                    maxLength: 20,
               },
     
     member: { type: Boolean, default: false},
@@ -37,6 +37,21 @@ var UserSchema = new Schema({
 
 })
 
+UserSchema
+.virtual('name')
+.get(function() {
+    var fullname = '';
+    if(this.first_name && this.last_name){
+        fullname = this.first_name + ' ' + this.last_name;
+    }
+    return fullname;
+})
+
+UserSchema
+.virtual('url')
+.get(function(){
+    return '/user/' + this._id;
+})
 
 
 //compile model from the schema
