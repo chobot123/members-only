@@ -2,8 +2,6 @@ var express = require('express');
 var router = express.Router();
 
 //Require controller modules
-var message_controller = require('../controllers/messageController');
-var user_controller = require('../controllers/userController');
 var home_controller = require('../controllers/homeController');
 
 router.get('/', home_controller.index);

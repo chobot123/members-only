@@ -1,0 +1,24 @@
+extends layout
+
+block content 
+    link(rel='stylesheet', href='/stylesheets/signup.css')
+    <div class=form-container>
+        <h2 id=title>#{title}</h2>
+        <form class="signup" action="" method="POST">
+            <div class=name-container>
+                <label for="firstname">First Name </label>
+                <input name="firstname" placeholder="First Name" type="text" />
+                <label for="lastname">Last Name </label>
+                <input name="lastname" placeholder="Last Name" type="text" />
+            </div>
+            <div class="user-info">
+                <label for="username">Username</label>
+                <input name="username" placeholder="Username" type="text" />
+                <label for="password">Password</label>
+                <input name="password" placeholder="Password" type="password" />
+                <label for="confirmpassword"> Confirm Password</label>
+                <input name="confirmpassword" placeholder="Confirm Password" type="password" />
+            </div>
+            <button>Register</button>
+        </form> 
+    </div>

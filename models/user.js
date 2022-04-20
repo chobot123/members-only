@@ -28,7 +28,6 @@ var UserSchema = new Schema({
     password: {
                     type: String,
                     minLength: 8,
-                    maxLength: 20,
               },
     
     member: { type: Boolean, default: false},

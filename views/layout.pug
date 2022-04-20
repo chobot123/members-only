@@ -2,24 +2,21 @@ doctype html
 html
   head
     title= title
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     link(rel='stylesheet', href='/stylesheets/layout.css')
-    link(rel='stylesheet', href='/stylesheets/normalize.css')
+    link(rel='stylesheet', href='/stylesheets/normalize9.css')
   body
     .content 
       .header 
-        .title #{title}
+        a(class='title' href="/") PokeDex Pals
         .nav-bar 
-          if (!user)
-            ul 
-              a(href='/log-in') Login
-              a(href='/sign-up') Sign Up 
+          if (!user) 
+            a(href='/log-in') Login
+            a(href='/sign-up') Sign Up 
           else 
-            a(href="/create-message") 
-              li Create Message
-            a(href="/member") 
-              li Member
-            a(href="/admin")  
-              li Admin
-            a(href="/log-out") 
-              li Log out 
+            a(href="/create-message") Create Message
+            a(href="/member") Member
+            a(href="/admin")  Admin
+            a(href="/log-out") Log out 
+
       block content

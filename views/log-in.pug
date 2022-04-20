@@ -1,0 +1,16 @@
+extends layout
+
+block content 
+    link(rel='stylesheet', href='/stylesheets/login.css')
+    <div class=form-container>
+        <h2 id=title>#{title}</h2>
+        <form class="login" action="" method="POST">
+            <div class="userinfo">
+                <label for="username">Username</label>
+                <input name="username" placeholder="Username" type="text" />
+                <label for="password">Password</label>
+                <input name="password" placeholder="Password" type="password" />
+            </div>
+            <button>Login</button>
+        </form> 
+    </div>

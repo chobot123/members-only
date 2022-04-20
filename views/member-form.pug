@@ -1,0 +1,25 @@
+extends layout
+
+block content
+    link(rel='stylesheet', href='/stylesheets/member.css')
+    if(!user.member)
+        <div class=form-container>
+            <h2 id=title>#{title}</h2>
+            <form class="membership" action="" method="POST">
+                <div class="password">
+                    <label for="password">Password</label>
+                    <input name="password" placeholder="Password" type="password" />
+                    if(errors)
+                        ul 
+                            each error in errors 
+                                li= error.msg
+                    else if(error)
+                        .error= error
+                </div>
+                <button>Register</button>
+            </form>
+    else 
+        .container 
+            h1#title Congratulations!!! 
+            h2#body You are a Member!!!
+    </div>

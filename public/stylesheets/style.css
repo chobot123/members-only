@@ -21,7 +21,7 @@
   min-height: 200px;
   justify-items: center;
   align-items: center;
-  border: 5px solid black;
+  border: 10px solid black;
   border-radius: 24px;
   background: linear-gradient(#7D1827 5%, red 49%, black 5%, white 49%, #CADBD1);
   margin: 20px;
