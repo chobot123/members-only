@@ -38,7 +38,13 @@ exports.create_message_post = [
             if(err){return next(err);}
             res.redirect('/home');
         })
-
-
     }
 ]
+
+exports.delete_message_post = function(req, res, next) {
+    console.log(req.body.messageId);
+    Message.findOneAndDelete({"_id": req.body.messageId}, function(err){
+        if(err) {return next(err);}
+        res.redirect('/');
+    })
+}

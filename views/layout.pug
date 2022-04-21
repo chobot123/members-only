@@ -4,8 +4,19 @@ html
     title= title
     <meta name="viewport" content="width=device-width, initial-scale=1">
     link(rel='stylesheet', href='/stylesheets/layout.css')
-    link(rel='stylesheet', href='/stylesheets/normalize9.css')
+    link(rel='stylesheet', href='/stylesheets/normalize.css')
   body
+    .overlay.toggle
+      .delete-form
+        form.delete-message-template(action="/delete" method='POST') 
+          img#cancel-img(src='./images/red-x.png' alt='red x image')
+          h1#title Are you sure?
+          h4#msg Do you really want to delete this message? This process cannot be undone.
+          input#message-id(type='hidden', name='messageId', required='true', value=messageId)
+          .button-container 
+            button#delete-button(type='submit' value='delete' name='delete') Delete
+            button#cancel-button(type='button') Cancel
+            button#exit-button(type='button') &times
     .content 
       .header 
         a(class='title' href="/") PokeDex Pals
@@ -18,5 +29,14 @@ html
             a(href="/member") Member
             a(href="/admin")  Admin
             a(href="/log-out") Log out 
-
       block content
+      
+  //- Script to toggle off modal form for deleting message
+  script.
+    let overlayOff = document.querySelector('.overlay');
+    overlayOff.addEventListener('click', (e) => {
+      if(e.target.className !== 'delete-message-template'){
+        overlayOff.classList.add('toggle');
+      }
+    })
+

@@ -32,5 +32,7 @@ router.post('/member', user_controller.becomeMember_post);
 router.get('/admin', user_controller.becomeAdmin_get);
 router.post('/admin', user_controller.becomeAdmin_post);
 
+//----- delete message -----//
+router.post('/delete', message_controller.delete_message_post);
 
 module.exports = router;

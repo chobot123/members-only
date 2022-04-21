@@ -45,6 +45,10 @@
   margin: 10px;
 }
 
+.title-and-exit{
+  display: flex;
+  justify-content: space-between;
+}
 
 #msg-title {
   font-size: 20px;

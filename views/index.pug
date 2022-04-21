@@ -1,17 +1,29 @@
 extends layout
 
 block content
-  link(rel='stylesheet', href='/stylesheets/style.css')
+  link(rel='stylesheet', href='/stylesheets/index.css')
 
   .message-container 
     .grid-container
-      each message in messages 
+      each message in messages
         .card
           #image= 'INPUT IMG'
-          .card-body 
-            #msg-title= message.title 
+          .card-body
+            .title-and-exit 
+              #msg-title= message.title 
+              button(id=message.id onclick="createForm(this)") &times
             #msg-text= message.text 
             .user-info
               #posted-by Posted By <strong>#{message.user.username}</strong>
               #posted-date= message.date 
-    
+
+
+
+  //- Script to toggle on modal form for deleting message
+  script.
+    let overlayOn = document.querySelector('.overlay.toggle');
+    let messageId = document.getElementById('message-id');
+    let createForm = (event) => {
+      messageId.value = event.id; //set message id to value to be passed
+      overlayOn.classList.remove('toggle');
+    }
