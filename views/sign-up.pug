@@ -19,6 +19,12 @@ block content
                 <label for="confirmpassword"> Confirm Password</label>
                 <input name="confirmpassword" placeholder="Confirm Password" type="password" />
             </div>
+            ul  
+                if(errors)
+                    each error in errors 
+                        li= error.msg
+                else if(error)
+                    li=error.msg
             <button>Register</button>
         </form> 
     </div>

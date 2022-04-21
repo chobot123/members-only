@@ -31,36 +31,39 @@ exports.signup_post = [
             
             res.render('sign-up', {title: 'Sign Up', errors: errors.array(),
                     firstname: req.body.firstname, last_name: req.body.lastname, username: req.body.username})
+            return;
         }
-
-        //if there are no errors, check if username already exists in database
+        else{
+            //if there are no errors, check if username already exists in database
             User.find({"username": req.body.username})
             .exec(function(err, results){
                 if(err){return next(err);}
                 if(results.length > 0) {
                     let newErr = new Error('Username already exists');
                     res.render('sign-up', {title: 'Sign Up', error: newErr});
+                    return;
                 }
             })
 
-        //make a user with a hashed password
-        bcrypt.hash(req.body.password, 10, (err, hashedPassword) => {
-            if(err) return next(err);
+             //make a user with a hashed password
+            bcrypt.hash(req.body.password, 10, (err, hashedPassword) => {
+                if(err) return next(err);
 
-            let user = new User({
-                first_name: req.body.firstname,
-                last_name: req.body.lastname,
-                username: req.body.username,
-                password: hashedPassword,
-                member: false,
-                admin: false,
-            });
+                let user = new User({
+                    first_name: req.body.firstname,
+                    last_name: req.body.lastname,
+                    username: req.body.username,
+                    password: hashedPassword,
+                    member: false,
+                    admin: false,
+                });
 
-            user.save(function(err) {
-                if(err){return next(err);}
-                res.redirect('/home');
+                user.save(function(err) {
+                    if(err){return next(err);}
+                    res.redirect('/home');
+                })
             })
-        })
+        }
     }
 ];
 

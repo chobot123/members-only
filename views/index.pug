@@ -6,15 +6,19 @@ block content
   .message-container 
     .grid-container
       each message in messages
+        -let username = message.user.username
+        if(!user || !user.member)
+          -username = 'Anonymous'
         .card
           #image= 'INPUT IMG'
           .card-body
             .title-and-exit 
-              #msg-title= message.title 
-              button(id=message.id onclick="createForm(this)") &times
+              #msg-title= message.title
+              -if(user && user.admin) 
+                button(id=message.id onclick="createForm(this)") &times
             #msg-text= message.text 
             .user-info
-              #posted-by Posted By <strong>#{message.user.username}</strong>
+              #posted-by Posted By <strong>#{username}</strong>
               #posted-date= message.date 
 
 
