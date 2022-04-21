@@ -62,3 +62,14 @@
   background-color: white;
   border-radius: 25px;
 }
+
+.title-and-exit>button {
+  background: transparent;
+  border: 1px solid black;
+  border-radius: 100%;
+}
+
+.title-and-exit>button:hover {
+  font-weight: bolder;
+  border: 2px solid black;
+}
